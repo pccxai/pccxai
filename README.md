@@ -4,7 +4,7 @@
 
 From NPU core architecture to a full AI-powered development toolchain, FPGA porting, and LLM integration — building a complete end-to-end HW/SW ecosystem.
 
-### 📍 Repositories
+### Repositories
 
 - **[pccx](https://github.com/pccxai/pccx)**  
   SystemVerilog-based NPU Core Architecture (RTL)
@@ -17,7 +17,7 @@ From NPU core architecture to a full AI-powered development toolchain, FPGA port
 - **[pccx-FPGA-NPU-LLM-kv260](https://github.com/pccxai/pccx-FPGA-NPU-LLM-kv260)**  
   Xilinx KV260 board integration with NPU + LLM (KV-cache) implementation and documentation
 
-### 🚀 Current Status
+### Current Status
 - NPU Core: RTL design completed
 - pccx-lab: AI Agent / Chat / Custom AI + Visualization + Report Pipeline in active development
 - FPGA: KV260 porting and LLM integration in progress

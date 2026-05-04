@@ -1,6 +1,6 @@
 # PCCX AI
 
-Open hardware/software research for NPU architecture, FPGA acceleration, and AI-assisted verification.
+Open hardware/software research for NPU architecture, FPGA acceleration, and verification tooling.
 
 This repository is a placeholder. The canonical landing page for the PCCX AI organisation is rendered from the org-level profile, not from here.
 
@@ -8,3 +8,4 @@ This repository is a placeholder. The canonical landing page for the PCCX AI org
 
 - PCCX AI organisation: https://github.com/pccxai
 - Organisation community files: https://github.com/pccxai/.github
+- Engineering discipline: docs/ENGINEERING_DISCIPLINE.md

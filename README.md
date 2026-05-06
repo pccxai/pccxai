@@ -1,7 +1,29 @@
-# pccxai static site
+<p align="center">
+  <img src="./docs/assets/pccx-aperture-mark.svg" alt="pccx aperture mark" width="72" height="72">
+</p>
+
+# pccxai
 
 This repository contains the main public website for the `pccxai` open-source
-ecosystem.
+ecosystem. `pccx` is contributor-facing work around NPU architecture, FPGA
+bring-up, lab tooling, and practical engineering documentation.
+
+## Entry points
+
+| Link | Purpose |
+| --- | --- |
+| [Live homepage](https://pccxai.pages.dev/) | Current Cloudflare Pages site served from `public/` |
+| [Website draft](./website-draft/) | Isolated draft surface from PR #4; review before promotion |
+| [Organization profile](https://github.com/pccxai/.github) | Shared organization profile, contributing, and security files |
+| [Project board](https://github.com/orgs/pccxai/projects/1) | Cross-repo PCCX Roadmap tracking board |
+
+## Claim guard
+
+Public copy should stay evidence-gated. Keep throughput, timing, bitstream,
+runtime, and board-level status claims tied to reviewed evidence; otherwise use
+target, planned, blocked, or exploratory language.
+
+## Live site
 
 The site is static HTML and CSS intended for Cloudflare Pages deployment at:
 

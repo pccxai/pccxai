@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contribute - pccxai</title>
+    <meta name="description" content="Contribution guidance for the pccxai open-source ecosystem.">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/" aria-label="pccxai home">pccxai</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="https://pccxai.github.io/pccx/">Docs</a>
+          <a href="/contribute/" aria-current="page">Contribute</a>
+          <a href="/assistant/">Assistant</a>
+          <a href="/security/">Security</a>
+          <a href="https://github.com/pccxai">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="wrap narrow">
+          <p class="eyebrow">Contributor guide</p>
+          <h1>Work in small, reviewable steps.</h1>
+          <p class="lead">
+            pccxai welcomes focused issues, documentation improvements,
+            reproducible experiments, and carefully scoped code or RTL changes.
+            The shared rule is simple: describe the boundary, show the evidence,
+            and avoid unsupported release language.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap content-grid">
+          <aside class="side-list" aria-label="Contribution sections">
+            <a href="#start">Become a contributor</a>
+            <a href="#choose">Choose a repository</a>
+            <a href="#issues">Issues and pull requests</a>
+            <a href="#docs">Documentation style</a>
+            <a href="#comments">Code and RTL comments</a>
+            <a href="#evidence">Evidence rules</a>
+          </aside>
+
+          <div class="prose wide">
+            <section id="start" class="anchor-section">
+              <h2>Become a contributor</h2>
+              <p>
+                Start by reading the repository README and open issues. For a
+                first change, prefer documentation fixes, small tests, narrow
+                bug reports, or issues labelled for new contributors.
+              </p>
+              <p>
+                Open a discussion before starting non-trivial architecture,
+                public API, release, security, or hardware-sensitive work.
+                Maintainers own those decisions and need to align on scope
+                before implementation starts.
+              </p>
+            </section>
+
+            <section id="choose" class="anchor-section">
+              <h2>Choose a repository</h2>
+              <div class="rule-list">
+                <div>
+                  <h3>pccx</h3>
+                  <p>Use this for documentation, specification, roadmap, and release coordination changes.</p>
+                </div>
+                <div>
+                  <h3>pccx-FPGA-NPU-LLM-kv260</h3>
+                  <p>Use this for RTL, formal models, simulation flow, and hardware evidence.</p>
+                </div>
+                <div>
+                  <h3>pccx-lab</h3>
+                  <p>Use this for CLI/core analysis, trace tooling, verification workflow, and lab UI work.</p>
+                </div>
+                <div>
+                  <h3>pccx-llm-launcher</h3>
+                  <p>Use this for the local launcher scaffold and integration planning that depends on reviewed hardware evidence.</p>
+                </div>
+                <div>
+                  <h3>systemverilog-ide</h3>
+                  <p>Use this for editor diagnostics, xsim log integration, and SystemVerilog workflow support.</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="issues" class="anchor-section">
+              <h2>Issues and pull requests</h2>
+              <p>
+                Search existing issues and pull requests first. File one topic
+                per issue, include the affected repository, and provide enough
+                context for another contributor to reproduce or review the
+                problem.
+              </p>
+              <p>
+                Pull requests should target <code>main</code>, stay focused,
+                link the related issue or discussion, and describe motivation,
+                approach, and verification. Avoid unrelated formatting, renames,
+                generated output, or repository setting changes in the same diff.
+              </p>
+              <p>
+                Do not report security findings in public issues. Use the
+                organization security policy instead.
+              </p>
+            </section>
+
+            <section id="docs" class="anchor-section">
+              <h2>Documentation writing style</h2>
+              <p>
+                Write plainly. Prefer concrete nouns, current project status,
+                command output, version identifiers, and links to source
+                material. Separate what is implemented from what is planned.
+              </p>
+              <p>
+                Use cautious labels such as development preview, pre-stable,
+                early scaffold, or host dry run when the work has not reached a
+                reviewed release boundary. Avoid promotional phrasing and avoid
+                turning targets into results.
+              </p>
+            </section>
+
+            <section id="comments" class="anchor-section">
+              <h2>Code and RTL comment style</h2>
+              <p>
+                Comments should explain intent, invariants, interface
+                boundaries, clock and reset assumptions, dataflow expectations,
+                and non-obvious constraints. Do not narrate each line of code.
+              </p>
+              <p>
+                RTL comments should be especially careful around timing,
+                handshake behavior, widths, reset state, and synthesis
+                assumptions. If a value is temporary, name the TODO owner or
+                issue. If a path is generated, make the source of generation
+                clear.
+              </p>
+            </section>
+
+            <section id="evidence" class="anchor-section">
+              <h2>Evidence rules and unsupported claims</h2>
+              <p>
+                Claims need evidence: commands, logs, reports, screenshots,
+                board setup, commit SHA, model configuration, test input, or CI
+                run, depending on the claim. Link the evidence from the issue,
+                pull request, or documentation page.
+              </p>
+              <p>
+                Do not claim production readiness, stable API or ABI, KV260
+                inference, timing closure, bitstream readiness, measured
+                throughput, or a tokens-per-second result without reviewed,
+                reproducible evidence.
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>pccxai</span>
+        <span><a href="https://github.com/pccxai/.github/blob/main/CONTRIBUTING.md">Organization contributing guide</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

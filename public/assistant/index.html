@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assistant preview - pccxai</title>
+    <meta name="description" content="Static preview of a future project help experience.">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/" aria-label="pccxai home">pccxai</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="https://pccxai.github.io/pccx/">Docs</a>
+          <a href="/contribute/">Contribute</a>
+          <a href="/assistant/" aria-current="page">Assistant</a>
+          <a href="/security/">Security</a>
+          <a href="https://github.com/pccxai">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="wrap narrow">
+          <p class="eyebrow">Static preview</p>
+          <h1>Assistant preview</h1>
+          <p class="lead">
+            This page shows the shape of a future project assistant using local,
+            scripted content. It does not call a live model, does not use a
+            provider endpoint, and does not include a Cloudflare Function.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="preview-shell" aria-label="Scripted assistant preview">
+            <div class="preview-column">
+              <p class="section-kicker">Suggested questions</p>
+              <div class="question-list">
+                <a href="#q-start">Where should I start?</a>
+                <a href="#q-repo">Which repository should I use?</a>
+                <a href="#q-claim">Can I claim hardware results?</a>
+                <a href="#q-security">What is required before a live assistant?</a>
+              </div>
+            </div>
+            <div class="answer-column">
+              <article id="q-start" class="faq-card">
+                <h2>Where should I start?</h2>
+                <p>
+                  Read the pccx docs for architecture context, then choose a
+                  focused repository issue. Documentation fixes, small tests,
+                  and reproducible bug reports are the lowest-friction first
+                  contributions.
+                </p>
+              </article>
+              <article id="q-repo" class="faq-card">
+                <h2>Which repository should I use?</h2>
+                <p>
+                  Use <code>pccx</code> for documentation, the FPGA repository
+                  for RTL and hardware evidence, <code>pccx-lab</code> for
+                  CLI/core verification workflows,
+                  <code>pccx-llm-launcher</code> for launcher scaffolding, and
+                  <code>systemverilog-ide</code> for editor workflows.
+                </p>
+              </article>
+              <article id="q-claim" class="faq-card">
+                <h2>Can I claim hardware results?</h2>
+                <p>
+                  Only with reviewed, reproducible evidence. Claims about board
+                  inference, bitstreams, timing, or throughput need logs,
+                  reports, commands, commit identifiers, and the exact hardware
+                  and model setup.
+                </p>
+              </article>
+              <article id="q-security" class="faq-card">
+                <h2>What is required before a live assistant?</h2>
+                <p>
+                  A live assistant needs a server-side boundary with Turnstile,
+                  rate limiting, Cloudflare AI Gateway, request validation,
+                  provider budget guards, and daily or monthly spend limits.
+                  None of that is active on this static preview.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted">
+        <div class="wrap two-column">
+          <div>
+            <p class="section-kicker">Boundary</p>
+            <h2>No live assistant is deployed here.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The current site contains HTML and CSS only. There is no secret,
+              no environment variable, no provider SDK, and no route that can
+              spend money.
+            </p>
+            <p>
+              Future work should add the assistant behind a reviewed Pages
+              Functions boundary and a documented abuse-control plan before any
+              provider traffic is enabled.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>pccxai</span>
+        <span><a href="/security/">Security posture</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Security posture - pccxai</title>
+    <meta name="description" content="Current security posture and future protection plan for the pccxai static site.">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/" aria-label="pccxai home">pccxai</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="https://pccxai.github.io/pccx/">Docs</a>
+          <a href="/contribute/">Contribute</a>
+          <a href="/assistant/">Assistant</a>
+          <a href="/security/" aria-current="page">Security</a>
+          <a href="https://github.com/pccxai">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="wrap narrow">
+          <p class="eyebrow">Security posture</p>
+          <h1>Static site now, guarded runtime later.</h1>
+          <p class="lead">
+            The current pccxai website is a static Cloudflare Pages site. It has
+            no paid API endpoint, no login flow, no form submission, and no
+            server-side code.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap two-column">
+          <div>
+            <p class="section-kicker">Current state</p>
+            <h2>Small public surface</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The deployed content is served from <code>public/</code> as
+              static files. Pages are written in HTML and CSS. The assistant
+              page is a static preview and cannot call a provider or spend
+              money.
+            </p>
+            <p>
+              Basic static-site headers are configured in <code>_headers</code>,
+              including content type protection, frame restrictions, a referrer
+              policy, a permissions policy, and a restrictive content security
+              policy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">Future plan</p>
+            <h2>Controls required before any paid runtime</h2>
+          </div>
+          <div class="rule-grid">
+            <div class="rule-card">
+              <h3>Turnstile</h3>
+              <p>Require bot checks before accepting assistant requests.</p>
+            </div>
+            <div class="rule-card">
+              <h3>Pages Functions</h3>
+              <p>Keep provider calls server-side with reviewed request validation.</p>
+            </div>
+            <div class="rule-card">
+              <h3>Rate limiting</h3>
+              <p>Limit abuse by IP, session, route, and request volume.</p>
+            </div>
+            <div class="rule-card">
+              <h3>AI Gateway</h3>
+              <p>Route provider traffic through Cloudflare controls and observability.</p>
+            </div>
+            <div class="rule-card">
+              <h3>Budget guards</h3>
+              <p>Set daily and monthly limits before any paid provider traffic is enabled.</p>
+            </div>
+            <div class="rule-card">
+              <h3>Secret handling</h3>
+              <p>Store runtime secrets only in Cloudflare settings, never in the repository.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap two-column">
+          <div>
+            <p class="section-kicker">Disclosure</p>
+            <h2>Report security issues privately.</h2>
+          </div>
+          <div class="prose">
+            <p>
+              Do not file public issues for security findings. Use the
+              organization security policy for affected repositories under the
+              <code>pccxai</code> organization.
+            </p>
+            <p>
+              Public issues are appropriate for documentation bugs, broken
+              links, accessibility problems, and ordinary website defects.
+            </p>
+            <p>
+              <a href="https://github.com/pccxai/.github/blob/main/SECURITY.md">Read the organization security policy</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>pccxai</span>
+        <span><a href="https://github.com/pccxai/.github/blob/main/SECURITY.md">Security policy</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

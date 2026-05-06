@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pccxai - open hardware/software ecosystem</title>
+    <meta name="description" content="Public entry page for the pccxai open-source hardware and software ecosystem.">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/" aria-label="pccxai home">pccxai</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="https://pccxai.github.io/pccx/">Docs</a>
+          <a href="/contribute/">Contribute</a>
+          <a href="/assistant/">Assistant</a>
+          <a href="/security/">Security</a>
+          <a href="https://github.com/pccxai">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="masthead">
+        <div class="wrap">
+          <p class="eyebrow">Open hardware and software research</p>
+          <h1>pccxai</h1>
+          <p class="lead">
+            pccxai is an open-source ecosystem for NPU architecture, FPGA
+            acceleration, verification tooling, and developer workflows around
+            the pccx project.
+          </p>
+          <div class="actions" aria-label="Primary entry points">
+            <a class="button primary" href="https://pccxai.github.io/pccx/">Read docs</a>
+            <a class="button" href="/contribute/">Start contributing</a>
+            <a class="button" href="https://github.com/pccxai">View GitHub</a>
+            <a class="button" href="/assistant/">Assistant preview</a>
+          </div>
+
+          <div class="system-map" aria-label="pccxai ecosystem map">
+            <div class="map-item map-docs">
+              <span class="map-label">pccx docs</span>
+              <span class="map-copy">architecture, specification, roadmap</span>
+            </div>
+            <div class="map-line" aria-hidden="true"></div>
+            <div class="map-item map-rtl">
+              <span class="map-label">FPGA RTL</span>
+              <span class="map-copy">SystemVerilog and hardware evidence</span>
+            </div>
+            <div class="map-line" aria-hidden="true"></div>
+            <div class="map-item map-lab">
+              <span class="map-label">pccx-lab</span>
+              <span class="map-copy">CLI-first analysis and verification</span>
+            </div>
+            <div class="map-line" aria-hidden="true"></div>
+            <div class="map-item map-tools">
+              <span class="map-label">tools</span>
+              <span class="map-copy">launcher and SystemVerilog IDE work</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap two-column">
+          <div>
+            <p class="section-kicker">What this site is</p>
+            <h2>A quiet front door for the ecosystem</h2>
+          </div>
+          <div class="prose">
+            <p>
+              The organization is split across focused repositories instead of a
+              single monolith. This page points to the current public surfaces:
+              the pccx documentation, the active FPGA repository, lab tooling,
+              a local launcher scaffold, and SystemVerilog editor work.
+            </p>
+            <p>
+              Hardware-sensitive statements are kept conservative here. Build,
+              timing, bitstream, throughput, and board-level inference claims
+              belong with reproducible evidence in the repository that produced
+              them.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted">
+        <div class="wrap two-column">
+          <div>
+            <p class="section-kicker">pccx at a high level</p>
+            <h2>A hardware/software co-design track</h2>
+          </div>
+          <div class="prose">
+            <p>
+              PCCX stands for Parallel Compute Core eXecutor. At a high level,
+              pccx explores an NPU architecture and supporting software stack
+              for transformer decoding workloads on edge FPGA-class systems.
+            </p>
+            <p>
+              The public work covers architecture documentation, RTL sources,
+              trace and verification workflows, and tooling that can consume
+              those interfaces. The project is still evidence-first: prototypes
+              are described as prototypes, and release language follows the
+              verification status of each repository.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">Repositories</p>
+            <h2>Where to go next</h2>
+          </div>
+          <div class="repo-grid">
+            <a class="repo-card" href="https://pccxai.github.io/pccx/">
+              <span class="repo-name">pccx documentation</span>
+              <span class="repo-copy">Architecture notes, release direction, and reference documentation.</span>
+            </a>
+            <a class="repo-card" href="https://github.com/pccxai/pccx-FPGA-NPU-LLM-kv260">
+              <span class="repo-name">pccx-FPGA-NPU-LLM-kv260</span>
+              <span class="repo-copy">SystemVerilog sources, formal work, and hardware bring-up evidence.</span>
+            </a>
+            <a class="repo-card" href="https://github.com/pccxai/pccx-lab">
+              <span class="repo-name">pccx-lab</span>
+              <span class="repo-copy">CLI-first analysis, trace handling, and verification workflow tooling.</span>
+            </a>
+            <a class="repo-card" href="https://github.com/pccxai/pccx-llm-launcher">
+              <span class="repo-name">pccx-llm-launcher</span>
+              <span class="repo-copy">Local launcher scaffold that depends on reviewed hardware evidence.</span>
+            </a>
+            <a class="repo-card" href="https://github.com/pccxai/systemverilog-ide">
+              <span class="repo-name">systemverilog-ide</span>
+              <span class="repo-copy">Editor workflow work for diagnostics and SystemVerilog development.</span>
+            </a>
+            <a class="repo-card" href="https://github.com/pccxai">
+              <span class="repo-name">pccxai organization</span>
+              <span class="repo-copy">All public repositories, issues, discussions, and project tracking.</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>pccxai</span>
+        <span><a href="/security/">Security posture</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

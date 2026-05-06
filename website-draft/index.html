@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>pccxai · website draft</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #0b0f17;
+      --muted: #5f6673;
+      --soft: #f5f5f7;
+      --soft-2: #fbfbfd;
+      --line: #dfe3ea;
+      --line-2: #eceff4;
+      --blue: #0b5fff;
+      --radius-xl: 36px;
+      --radius-lg: 24px;
+      --shadow-soft: 0 28px 90px rgba(0, 0, 0, 0.08);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+        "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.45;
+      letter-spacing: -0.015em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(11, 95, 255, 0.045), transparent 34rem),
+        linear-gradient(180deg, #fff, #fbfbfd 34rem, #fff);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 32px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: saturate(180%) blur(22px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 170px;
+    }
+
+    .brand svg { display: block; }
+
+    .brand-word {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 23px;
+      font-weight: 650;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 13px;
+      color: #262b36;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 170px;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 17px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 550;
+    }
+
+    .pill.primary {
+      border-color: #0b0f17;
+      background: #0b0f17;
+      color: #fff;
+    }
+
+    .hero {
+      padding: 118px 24px 74px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line-2);
+      color: #3b4250;
+      background: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      font-weight: 560;
+    }
+
+    .hero h1 {
+      margin: 26px auto 0;
+      max-width: 980px;
+      font-size: clamp(54px, 8vw, 112px);
+      line-height: 0.95;
+      letter-spacing: -0.075em;
+      font-weight: 720;
+    }
+
+    .hero p {
+      max-width: 740px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.35;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-actions {
+      margin-top: 38px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .logo-stage {
+      max-width: 880px;
+      min-height: 360px;
+      margin: 70px auto 0;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, #f8f9fb 0%, #f1f3f7 100%);
+      border: 1px solid var(--line-2);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-stage::before {
+      content: "";
+      position: absolute;
+      inset: auto 7% 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(11, 15, 23, 0.2), transparent);
+    }
+
+    .logo-lockup-large {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      transform: translateY(-4px);
+    }
+
+    .logo-lockup-large .word {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: clamp(54px, 8vw, 96px);
+      font-weight: 650;
+      letter-spacing: -0.085em;
+    }
+
+    .logo-meta {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: #7a8291;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 11px;
+      letter-spacing: 0.02em;
+    }
+
+    .section { padding: 84px 24px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 70px);
+      line-height: 1.02;
+      letter-spacing: -0.065em;
+      font-weight: 720;
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.45;
+      letter-spacing: -0.03em;
+    }
+
+    .grid { display: grid; gap: 18px; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line-2);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      min-height: 208px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.035);
+    }
+
+    .card.soft { background: var(--soft-2); }
+
+    .card h3 {
+      margin: 18px 0 0;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      letter-spacing: -0.02em;
+    }
+
+    .card a {
+      display: inline-flex;
+      margin-top: 22px;
+      color: var(--blue);
+      font-weight: 620;
+      font-size: 14px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--soft);
+      border: 1px solid var(--line-2);
+      display: grid;
+      place-items: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: #0b0f17;
+    }
+
+    .wide-panel {
+      border-radius: var(--radius-xl);
+      background: #0b0f17;
+      color: #fff;
+      padding: clamp(32px, 6vw, 72px);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .wide-panel p { color: rgba(255, 255, 255, 0.68); }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 66px);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .mini-list { display: grid; gap: 10px; }
+
+    .mini-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mini-dot {
+      width: 9px;
+      height: 9px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: #fff;
+      opacity: 0.82;
+      flex: none;
+    }
+
+    .mini-item strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: -0.025em;
+    }
+
+    .mini-item span {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 14px;
+    }
+
+    .assistant-preview {
+      border-radius: var(--radius-xl);
+      background: var(--soft);
+      padding: clamp(26px, 5vw, 58px);
+      border: 1px solid var(--line-2);
+    }
+
+    .assistant-box {
+      margin-top: 30px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #fff;
+      padding: 24px;
+      max-width: 720px;
+    }
+
+    .chat-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 0;
+    }
+
+    .chat-row + .chat-row { border-top: 1px solid var(--line-2); }
+
+    .bubble-label {
+      width: 88px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 620;
+      flex: none;
+    }
+
+    .bubble-text {
+      color: #1a202c;
+      font-size: 15px;
+    }
+
+    .footer {
+      padding: 54px 24px 70px;
+      border-top: 1px solid var(--line-2);
+      background: #fbfbfd;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .footer h4 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .footer a {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .nav { padding: 0 18px; }
+      .nav-links { display: none; }
+      .nav-actions { min-width: auto; }
+      .hero { padding-top: 82px; }
+      .logo-stage { min-height: 290px; }
+      .logo-lockup-large { flex-direction: column; gap: 12px; }
+      .logo-meta { display: none; }
+      .grid.three,
+      .panel-grid,
+      .footer-inner,
+      .footer-links {
+        grid-template-columns: 1fr;
+      }
+      .card { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav">
+      <a class="brand" href="#" aria-label="pccxai home">
+        <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+          <polyline points="13,24 13,13 51,13 51,24" fill="none" stroke="#0b0f17" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+          <polyline points="13,40 13,51 51,51 51,40" fill="none" stroke="#0b0f17" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+          <rect fill="#0b5fff" x="28" y="4" width="8" height="56"/>
+          <rect fill="#0b5fff" x="24" y="4" width="16" height="3"/>
+          <rect fill="#0b5fff" x="24" y="57" width="16" height="3"/>
+        </svg>
+        <span class="brand-word">pccx</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#contribute">Contribute</a>
+        <a href="#assistant">Assistant</a>
+        <a href="#security">Security</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="pill" href="https://github.com/pccxai">GitHub</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="eyebrow">Open-source hardware and software, evidence first.</div>
+          <h1>Build quietly. Measure carefully. Share the work.</h1>
+          <p>
+            pccxai is a contributor-oriented ecosystem around PCCX, edge AI acceleration,
+            reproducible FPGA work, and practical engineering documentation.
+          </p>
+          <div class="hero-actions">
+            <a class="pill primary" href="#ecosystem">Explore the ecosystem</a>
+            <a class="pill" href="#contribute">Start contributing</a>
+          </div>
+
+          <div class="logo-stage" aria-label="PCCX logo stage">
+            <div class="logo-lockup-large">
+              <svg width="118" height="118" viewBox="0 0 64 64" aria-hidden="true">
+                <polyline points="13,24 13,13 51,13 51,24" fill="none" stroke="#0b0f17" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+                <polyline points="13,40 13,51 51,51 51,40" fill="none" stroke="#0b0f17" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+                <rect fill="#0b5fff" x="28" y="4" width="8" height="56"/>
+                <rect fill="#0b5fff" x="24" y="4" width="16" height="3"/>
+                <rect fill="#0b5fff" x="24" y="57" width="16" height="3"/>
+              </svg>
+              <div class="word">pccx</div>
+            </div>
+            <div class="logo-meta">
+              <span>parallel compute core executor</span>
+              <span>draft surface · measured claims only</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ecosystem">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="section-kicker">Ecosystem</p>
+            <h2 class="section-title">A set of focused repositories, not one giant product.</h2>
+            <p class="section-copy">
+              Each repository has a small role: architecture docs, RTL bring-up, lab tooling,
+              runtime descriptors, editor surfaces, or staging work.
+            </p>
+          </div>
+
+          <div class="grid three">
+            <article class="card">
+              <div class="icon">P</div>
+              <h3>pccx</h3>
+              <p>Documentation, architecture notes, roadmap, and public project overview.</p>
+              <a href="https://pccxai.github.io/pccx/en/index.html">Read docs →</a>
+            </article>
+            <article class="card">
+              <div class="icon">RTL</div>
+              <h3>FPGA NPU</h3>
+              <p>Active v002 work targeting KV260, with evidence-gated hardware claims.</p>
+              <a href="https://github.com/pccxai/pccx-FPGA-NPU-LLM-kv260">View repo →</a>
+            </article>
+            <article class="card">
+              <div class="icon">LAB</div>
+              <h3>pccx-lab</h3>
+              <p>Simulation, validation, trace, and workflow surfaces for reproducible work.</p>
+              <a href="https://github.com/pccxai/pccx-lab">View repo →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contribute">
+        <div class="section-inner">
+          <div class="wide-panel">
+            <div class="panel-grid">
+              <div>
+                <p class="section-kicker" style="color:#8fb4ff;">Contribute</p>
+                <h2 class="panel-title">The best first contribution is a clear one.</h2>
+                <p class="section-copy">
+                  Start with docs, tests, issue cleanup, examples, or small validation tasks.
+                  Keep claims specific. Attach evidence. Ask early.
+                </p>
+                <div class="hero-actions" style="justify-content:flex-start; margin-top:30px;">
+                  <a class="pill" href="/contribute/">Open contribution guide</a>
+                </div>
+              </div>
+              <div class="mini-list">
+                <div class="mini-item">
+                  <div class="mini-dot"></div>
+                  <div><strong>Choose the right repo.</strong><span>Docs, RTL, lab tooling, launcher contracts, IDE surfaces, or staging.</span></div>
+                </div>
+                <div class="mini-item">
+                  <div class="mini-dot"></div>
+                  <div><strong>Keep PRs narrow.</strong><span>One change, one reason, one validation path.</span></div>
+                </div>
+                <div class="mini-item">
+                  <div class="mini-dot"></div>
+                  <div><strong>Do not overclaim.</strong><span>Measured, simulated, planned, and target results must stay separate.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="assistant">
+        <div class="section-inner">
+          <div class="assistant-preview">
+            <div class="section-head" style="margin-bottom:0;">
+              <p class="section-kicker">Assistant preview</p>
+              <h2 class="section-title">A quiet help surface, not a model demo.</h2>
+              <p class="section-copy">
+                The current assistant page is static. It does not call a model service, does not use an API key,
+                and cannot spend credits. Live model access comes later, behind protection.
+              </p>
+            </div>
+            <div class="assistant-box">
+              <div class="chat-row">
+                <div class="bubble-label">Question</div>
+                <div class="bubble-text">How do I start contributing?</div>
+              </div>
+              <div class="chat-row">
+                <div class="bubble-label">Answer</div>
+                <div class="bubble-text">
+                  Read the contribution guide, choose one repository, open or comment on an issue,
+                  then submit a small PR with validation notes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="security">
+        <div class="section-inner">
+          <div class="section-head">
+            <p class="section-kicker">Security</p>
+            <h2 class="section-title">Static first. Runtime later.</h2>
+            <p class="section-copy">
+              The site is static today. No client-side model key. No paid API endpoint.
+              Future assistant work will require Turnstile, server-side verification, rate limits,
+              provider budget guards, and logging.
+            </p>
+          </div>
+
+          <div class="grid three">
+            <article class="card soft">
+              <div class="icon">0</div>
+              <h3>No paid endpoint</h3>
+              <p>The preview cannot burn model credits because there is no runtime provider call.</p>
+            </article>
+            <article class="card soft">
+              <div class="icon">T</div>
+              <h3>Turnstile later</h3>
+              <p>When chat becomes live, requests must pass server-side Turnstile validation.</p>
+            </article>
+            <article class="card soft">
+              <div class="icon">RL</div>
+              <h3>Rate limits</h3>
+              <p>Public assistant traffic needs per-IP, per-session, and daily budget limits.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <a class="brand" href="#" aria-label="pccxai home">
+            <svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true">
+              <polyline points="13,24 13,13 51,13 51,24" fill="none" stroke="#0b0f17" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+              <polyline points="13,40 13,51 51,51 51,40" fill="none" stroke="#0b0f17" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+              <rect fill="#0b5fff" x="28" y="4" width="8" height="56"/>
+              <rect fill="#0b5fff" x="24" y="4" width="16" height="3"/>
+              <rect fill="#0b5fff" x="24" y="57" width="16" height="3"/>
+            </svg>
+            <span class="brand-word">pccx</span>
+          </a>
+          <p style="max-width:360px; margin-top:16px;">
+            Built by contributors, for contributors. Public work, measured claims, practical engineering.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4>Ecosystem</h4>
+            <a href="https://github.com/pccxai">GitHub organization</a>
+            <a href="https://pccxai.github.io/pccx/en/index.html">PCCX docs</a>
+            <a href="https://github.com/pccxai/pccx-lab">pccx-lab</a>
+          </div>
+          <div>
+            <h4>Start</h4>
+            <a href="/contribute/">Contribution guide</a>
+            <a href="/assistant/">Assistant preview</a>
+            <a href="/security/">Security posture</a>
+          </div>
+          <div>
+            <h4>Principles</h4>
+            <a href="#">Evidence first</a>
+            <a href="#">Small PRs</a>
+            <a href="#">No unsupported claims</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
